@@ -8,11 +8,11 @@ use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\NewsletterSubscriberTransfer;
 use Generated\Shared\Transfer\NewsletterSubscriptionRequestTransfer;
 use Generated\Shared\Transfer\NewsletterTypeTransfer;
-use Pyz\Shared\Newsletter\NewsletterConstants;
+use FondOfSpryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\Customer\Communication\Controller\GatewayController as SprykerGatewayController;
 
 /**
- * @method \Pyz\Zed\Customer\Communication\CustomerCommunicationFactory getFactory()
+ * @method \FondOfSpryker\Zed\Customer\Communication\CustomerCommunicationFactory getFactory()
  */
 class GatewayController extends SprykerGatewayController
 {
