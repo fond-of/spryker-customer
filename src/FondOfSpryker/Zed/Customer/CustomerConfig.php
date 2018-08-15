@@ -2,13 +2,12 @@
 
 namespace FondOfSpryker\Zed\Customer;
 
-use Generated\Shared\Transfer\SequenceNumberSettingsTransfer;
 use FondOfSpryker\Shared\Customer\CustomerConstants;
+use Generated\Shared\Transfer\SequenceNumberSettingsTransfer;
 use Spryker\Zed\Customer\CustomerConfig as BaseCustomerConfig;
 
 class CustomerConfig extends BaseCustomerConfig
 {
-
     /**
      * @return \Generated\Shared\Transfer\SequenceNumberSettingsTransfer
      */

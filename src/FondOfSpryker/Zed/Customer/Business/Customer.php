@@ -2,8 +2,8 @@
 
 namespace FondOfSpryker\Zed\Customer\Business;
 
-use Generated\Shared\Transfer\CustomerTransfer;
 use FondOfSpryker\Zed\Customer\Business\Customer\CustomerInterface;
+use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Zed\Customer\Business\Customer\Customer as SprykerCustomer;
 
 class Customer extends SprykerCustomer implements CustomerInterface

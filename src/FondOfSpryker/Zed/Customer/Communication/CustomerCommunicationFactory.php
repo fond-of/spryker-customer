@@ -5,6 +5,9 @@ namespace FondOfSpryker\Zed\Customer\Communication;
 use FondOfSpryker\Zed\Customer\CustomerDependencyProvider;
 use Spryker\Zed\Customer\Communication\CustomerCommunicationFactory as SprykerCustomerCommunicationFactory;
 
+/**
+ * @method \FondOfSpryker\Zed\Customer\CustomerConfig getConfig()
+ */
 class CustomerCommunicationFactory extends SprykerCustomerCommunicationFactory
 {
     /**
