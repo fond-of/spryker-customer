@@ -2,13 +2,13 @@
 
 namespace FondOfSpryker\Zed\Customer\Communication\Controller;
 
+use FondOfSpryker\Shared\Newsletter\NewsletterConstants;
 use Generated\Shared\Transfer\CustomerOverviewRequestTransfer;
 use Generated\Shared\Transfer\CustomerOverviewResponseTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\NewsletterSubscriberTransfer;
 use Generated\Shared\Transfer\NewsletterSubscriptionRequestTransfer;
 use Generated\Shared\Transfer\NewsletterTypeTransfer;
-use FondOfSpryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\Customer\Communication\Controller\GatewayController as SprykerGatewayController;
 
 /**
