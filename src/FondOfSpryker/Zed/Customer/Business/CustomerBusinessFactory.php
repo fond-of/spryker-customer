@@ -4,9 +4,10 @@ namespace FondOfSpryker\Zed\Customer\Business;
 
 use FondOfSpryker\Zed\Customer\Business\Checkout\CustomerOrderSaver;
 use Spryker\Zed\Customer\Business\CustomerBusinessFactory as SprykerCustomerBusinessFactory;
+use Spryker\Zed\Customer\Business\ReferenceGenerator\CustomerReferenceGenerator;
 
 /**
- * @method \Spryker\Zed\Customer\CustomerConfig getConfig()
+ * @method \FondOfSpryker\Zed\Customer\CustomerConfig getConfig()
  * @method \Spryker\Zed\Customer\Persistence\CustomerQueryContainerInterface getQueryContainer()
  */
 class CustomerBusinessFactory extends SprykerCustomerBusinessFactory
@@ -17,5 +18,16 @@ class CustomerBusinessFactory extends SprykerCustomerBusinessFactory
     public function createCheckoutCustomerOrderSaver()
     {
         return new CustomerOrderSaver($this->createCustomer(), $this->createAddress());
+    }
+
+    /**
+     * @return \Spryker\Zed\Customer\Business\ReferenceGenerator\CustomerReferenceGeneratorInterface
+     */
+    protected function createCustomerReferenceGenerator()
+    {
+        return new CustomerReferenceGenerator(
+            $this->getSequenceNumberFacade(),
+            $this->getConfig()->getCustomerReferenceDefaults()
+        );
     }
 }
