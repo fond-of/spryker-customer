@@ -2,7 +2,7 @@
 
 namespace FondOfSpryker\Zed\Customer;
 
-use Pyz\Shared\Newsletter\NewsletterConstants;
+use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Zed\CustomerGroup\Communication\Plugin\CustomerAnonymizer\RemoveCustomerFromGroupPlugin;
 use Spryker\Zed\CustomerUserConnector\Communication\Plugin\CustomerTransferUsernameExpanderPlugin;
@@ -19,14 +19,37 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideCommunicationLayerDependencies(Container $container)
+    public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
 
+        $container = $this->addSalesFacade($container);
+        $container = $this->addNewsletterFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addSalesFacade(Container $container): Container
+    {
         $container[self::SALES_FACADE] = function (Container $container) {
             return $container->getLocator()->sales()->facade();
         };
 
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addNewsletterFacade(Container $container): Container
+    {
         $container[self::NEWSLETTER_FACADE] = function (Container $container) {
             return $container->getLocator()->newsletter()->facade();
         };
@@ -37,7 +60,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Zed\Customer\Dependency\Plugin\CustomerAnonymizerPluginInterface[]
      */
-    protected function getCustomerAnonymizerPlugins()
+    protected function getCustomerAnonymizerPlugins(): array
     {
         return [
             new CustomerUnsubscribePlugin([

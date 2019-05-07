@@ -16,7 +16,6 @@ class CustomerConfig extends SprykerCustomerConfig
     public function getCustomerReferenceDefaults()
     {
         $sequenceNumberSettingsTransfer = new SequenceNumberSettingsTransfer();
-
         $sequenceNumberSettingsTransfer->setName(CustomerConstants::NAME_CUSTOMER_REFERENCE);
 
         $sequenceNumberPrefixParts = [];
