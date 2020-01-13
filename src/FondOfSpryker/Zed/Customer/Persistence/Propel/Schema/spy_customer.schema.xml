@@ -3,6 +3,8 @@
 
     <table name="spy_customer" idMethod="native" phpName="SpyCustomer" identifierQuoting="true">
         <column name="phone" size="255" type="VARCHAR"/>
+        <column name="salutation" type="ENUM" valueSet="Mr, Mrs, Dr, Ms, Diverse"/>
+        <column name="gender" type="ENUM" valueSet="Male, Female, Diverse"/>
     </table>
 
 </database>
