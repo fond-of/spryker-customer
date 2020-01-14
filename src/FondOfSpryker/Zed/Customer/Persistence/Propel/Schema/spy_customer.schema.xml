@@ -1,10 +1,16 @@
 <?xml version="1.0"?>
-<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Customer\Persistence" package="src.Orm.Zed.Customer.Persistence">
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed"
+          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\Customer\Persistence" package="src.Orm.Zed.Customer.Persistence">
 
     <table name="spy_customer" idMethod="native" phpName="SpyCustomer" identifierQuoting="true">
         <column name="phone" size="255" type="VARCHAR"/>
         <column name="salutation" type="ENUM" valueSet="Mr, Mrs, Dr, Ms, Diverse"/>
         <column name="gender" type="ENUM" valueSet="Male, Female, Diverse"/>
+    </table>
+
+    <table name="spy_customer_address" idMethod="native" phpName="SpyCustomerAddress">
+        <column name="salutation" type="ENUM" valueSet="Mr, Mrs, Dr, Ms, Diverse"/>
     </table>
 
 </database>
