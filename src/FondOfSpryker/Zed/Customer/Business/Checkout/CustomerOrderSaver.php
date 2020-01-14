@@ -22,7 +22,7 @@ class CustomerOrderSaver extends SprykerCustomerOrderSaver
         'Ms' => 'female',
         'Mrs' => 'female',
         'Dr' => 'unknown',
-        'diverse' => 'diverse',
+        'Diverse' => 'diverse',
     ];
 
     /**
