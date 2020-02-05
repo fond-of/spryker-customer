@@ -13,7 +13,7 @@ use Spryker\Client\Customer\CustomerClient as SprykerCustomerClient;
 class CustomerClient extends SprykerCustomerClient implements CustomerClientInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -29,7 +29,7 @@ class CustomerClient extends SprykerCustomerClient implements CustomerClientInte
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -41,11 +41,12 @@ class CustomerClient extends SprykerCustomerClient implements CustomerClientInte
     {
         $customerTransfer = parent::createAddressAndUpdateCustomerDefaultAddresses($addressTransfer);
         $this->setCustomer($customerTransfer);
+
         return $customerTransfer;
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -57,11 +58,12 @@ class CustomerClient extends SprykerCustomerClient implements CustomerClientInte
     {
         $customerTransfer = parent::updateAddressAndCustomerDefaultAddresses($addressTransfer);
         $this->setCustomer($customerTransfer);
+
         return $customerTransfer;
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -76,11 +78,12 @@ class CustomerClient extends SprykerCustomerClient implements CustomerClientInte
         $quoteTransfer = $cartClient->getQuote();
         $quoteTransfer->setCustomer($customerTransfer);
         $cartClient->storeQuote($quoteTransfer);
+
         return $customerTransfer;
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -93,11 +96,12 @@ class CustomerClient extends SprykerCustomerClient implements CustomerClientInte
             $customerTransfer = $this->getCustomerById($customerTransfer->getIdCustomer());
             $this->setCustomer($customerTransfer);
         }
+
         return $customerTransfer;
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
