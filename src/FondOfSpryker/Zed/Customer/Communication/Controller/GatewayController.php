@@ -1,5 +1,5 @@
 <?php
-
+// SprykerUpgradeToDo Check if this class is still needed
 namespace FondOfSpryker\Zed\Customer\Communication\Controller;
 
 use FondOfSpryker\Shared\Newsletter\NewsletterConstants;
