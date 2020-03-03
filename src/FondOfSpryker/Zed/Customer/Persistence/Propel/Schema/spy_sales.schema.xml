@@ -11,5 +11,6 @@
 
     <table name="spy_sales_order" phpName="SpySalesOrder">
         <column name="salutation" type="ENUM" valueSet="Mr, Mrs, Dr, Ms, Diverse" required="false"/>
+        <column name="gender" type="ENUM" valueSet="Male, Female, Diverse" required="false"/>
     </table>
 </database>
