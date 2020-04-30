@@ -5,10 +5,13 @@ namespace FondOfSpryker\Zed\Customer\Business\Checkout;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
-use Spryker\Zed\Customer\Business\Checkout\CustomerOrderSaver as SprykerCustomerOrderSaver;
+use Spryker\Zed\Customer\Business\Checkout\CustomerOrderSaverWithMultiShippingAddress as SprykerCustomerOrderSaverWithMultiShippingAddress;
 use Spryker\Zed\Customer\Business\Exception\CustomerNotFoundException;
 
-class CustomerOrderSaver extends SprykerCustomerOrderSaver
+/**
+ * @method \Spryker\Zed\Customer\Business\CustomerBusinessFactory getFactory()
+ */
+class CustomerOrderSaverWithMultiShippingAddress extends SprykerCustomerOrderSaverWithMultiShippingAddress
 {
     public const GENDER_MAPPING = [
         'male' => 'Male',
