@@ -6,7 +6,6 @@ use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
 use Spryker\Zed\Customer\Business\Checkout\CustomerOrderSaverWithMultiShippingAddress as SprykerCustomerOrderSaverWithMultiShippingAddress;
-use Spryker\Zed\Customer\Business\Exception\CustomerNotFoundException;
 
 /**
  * @method \Spryker\Zed\Customer\Business\CustomerBusinessFactory getFactory()
@@ -38,16 +37,17 @@ class CustomerOrderSaverWithMultiShippingAddress extends SprykerCustomerOrderSav
     {
         $this->assertCustomerRequirements($quoteTransfer);
 
-        try {
-            $customerFromCheckout = clone $quoteTransfer->getCustomer();
-            $customerTransfer = $this->customer->get($quoteTransfer->getCustomer());
-        } catch (CustomerNotFoundException $e) {
-            $customerResponse = $this->customer->register($quoteTransfer->getCustomer());
-            $customerTransfer = $customerResponse->getCustomerTransfer();
+        $customerTransfer = $quoteTransfer->getCustomer();
+
+        if ($customerTransfer->getIsGuest() === true) {
+            return;
         }
 
-        if (isset($customerFromCheckout) && $customerTransfer->getIdCustomer()) {
-            $this->updateCurrentCustomerData($customerFromCheckout, $customerTransfer);
+        $customerTransfer = $this->updateCurrentCustomerData($customerTransfer);
+
+        if ($this->isNewCustomer($customerTransfer)) {
+            $this->createNewCustomer($quoteTransfer, $customerTransfer);
+        } else {
             $this->customer->update($customerTransfer);
         }
 
@@ -55,17 +55,17 @@ class CustomerOrderSaverWithMultiShippingAddress extends SprykerCustomerOrderSav
     }
 
     /**
-     * @return void
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected function updateCurrentCustomerData(
-        CustomerTransfer $checkoutCustomerTransfer,
-        CustomerTransfer $databaseCustomerTransfer
-    ): void {
-        $databaseCustomerTransfer
-            ->setFirstName($checkoutCustomerTransfer->getFirstName())
-            ->setLastName($checkoutCustomerTransfer->getLastName())
-            ->setSalutation($this->getSalutation($checkoutCustomerTransfer->getSalutation()))
-            ->setGender($this->getGender($this->getGenderBySalutation($checkoutCustomerTransfer->getSalutation())));
+    protected function updateCurrentCustomerData(CustomerTransfer $customerTransfer): CustomerTransfer
+    {
+        $customerTransfer
+            ->setSalutation($this->getSalutation($customerTransfer->getSalutation()))
+            ->setGender($this->getGender($this->getGenderBySalutation($customerTransfer->getSalutation())));
+
+        return $customerTransfer;
     }
 
     /**
