@@ -4,5 +4,6 @@
 
 build
 vendor
+src/Generated
 
 composer.lock
