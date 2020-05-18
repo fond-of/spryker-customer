@@ -12,4 +12,6 @@ interface CustomerConstants extends BaseCustomerConstants
         "AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GR", "HR",
         "HU", "IE", "IT", "LT", "LU", "LV", "MT", "NL", "PL", "PT", "RO", "SE", "SI", "SK",
     ];
+
+    public const CUSTOMER_REGISTRATION_MAIL_ENABLED = 'CUSTOMER_REGISTRATION_MAIL_ENABLED';
 }

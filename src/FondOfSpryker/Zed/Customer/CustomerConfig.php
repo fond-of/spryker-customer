@@ -36,4 +36,12 @@ class CustomerConfig extends SprykerCustomerConfig
 
         return $sequenceNumberSettingsTransfer;
     }
+
+    /**
+     * @return bool
+     */
+    public function isRegistrationMailEnabled(): bool
+    {
+        return $this->get(CustomerConstants::CUSTOMER_REGISTRATION_MAIL_ENABLED, true);
+    }
 }
