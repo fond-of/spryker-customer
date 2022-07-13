@@ -8,6 +8,7 @@ use Spryker\Zed\Customer\Business\Checkout\CustomerOrderSaverInterface;
 use Spryker\Zed\Customer\Business\Customer\CustomerInterface;
 use Spryker\Zed\Customer\Business\CustomerBusinessFactory as SprykerCustomerBusinessFactory;
 use Spryker\Zed\Customer\Business\ReferenceGenerator\CustomerReferenceGenerator;
+use Spryker\Zed\Customer\Business\ReferenceGenerator\CustomerReferenceGeneratorInterface;
 
 /**
  * @method \FondOfSpryker\Zed\Customer\CustomerConfig getConfig()
@@ -29,20 +30,22 @@ class CustomerBusinessFactory extends SprykerCustomerBusinessFactory
             $this->createEmailValidator(),
             $this->getMailFacade(),
             $this->getLocaleQueryContainer(),
-            $this->getStore(),
+            $this->getLocaleFacade(),
             $this->createCustomerExpander(),
-            $this->getPostCustomerRegistrationPlugins()
+            $this->createCustomerPasswordPolicyValidator(),
+            $this->getPostCustomerRegistrationPlugins(),
         );
     }
 
     /**
      * @return \Spryker\Zed\Customer\Business\ReferenceGenerator\CustomerReferenceGeneratorInterface
      */
-    protected function createCustomerReferenceGenerator()
+    public function createCustomerReferenceGenerator(): CustomerReferenceGeneratorInterface
     {
         return new CustomerReferenceGenerator(
             $this->getSequenceNumberFacade(),
-            $this->getConfig()->getCustomerReferenceDefaults()
+            $this->getStoreFacade(),
+            $this->getConfig(),
         );
     }
 
