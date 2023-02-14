@@ -14,7 +14,7 @@ class Customer extends SprykerCustomer
      */
     protected function sendRegistrationToken(CustomerTransfer $customerTransfer)
     {
-        if ($this->customerConfig->isRegistrationMailEnabled()) {
+        if ($this->customerConfig->isRegistrationMailEnabled() && $customerTransfer->getForcedRegister() !== true) {
             return parent::sendRegistrationToken($customerTransfer);
         }
 
